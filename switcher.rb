@@ -1,7 +1,7 @@
 class Switcher < Formula
   desc "Providing the binary executable for the 'switch' script."
   homepage "https://github.com/danielfoehrKn/kubectlSwitch"
-  version "v0.0.1"
+  version "v0.0.2"
 
   if OS.mac?
     url "https://github.com/danielfoehrKn/kubectlSwitch/releases/download/0.0.2/switcher.tar.gz"

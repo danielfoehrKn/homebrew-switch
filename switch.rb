@@ -1,14 +1,14 @@
 class Switch < Formula
-  desc "Context switching utility for kubectl"
+  desc "The kubectx for operators."
   homepage "https://github.com/danielfoehrKn/kubeswitch"
-  version "v0.1.0"
+  version "v0.2.0"
 
   if OS.mac?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.1.0/switch.tar.gz"
-    sha256 "e1d7cc518b2dd2e4dc27a92be27afa17c4df00afe0133a2d78ddb67c54987789"
+    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.2.0/switch.tar.gz"
+    sha256 "202f6657177947487939c634ef260a38c3bac50b442c1d3af42597ad0d463986"
   elsif OS.linux?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.1.0/switch.tar.gz"
-    sha256 "e1d7cc518b2dd2e4dc27a92be27afa17c4df00afe0133a2d78ddb67c54987789"
+    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.2.0/switch.tar.gz"
+    sha256 "202f6657177947487939c634ef260a38c3bac50b442c1d3af42597ad0d463986"
   end
 
   depends_on "danielfoehrkn/switch/switcher"

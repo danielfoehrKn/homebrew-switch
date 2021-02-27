@@ -19,8 +19,8 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "Update kubeswitch to version '${{ github.event.client_payload.tag }}'"
-          delete-branch: true
           title: [Kubeswitch] Release "${{ github.event.client_payload.tag }}"
+          delete-branch: true
           body: |
             Awesome. There is a new update.
           labels: |

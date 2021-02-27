@@ -1,7 +1,7 @@
 name: Remote Dispatch Action
 on: [repository_dispatch]
 jobs:
-  update-gardenctl:
+  update-kubeswitch:
     runs-on: ubuntu-latest
     steps:
       - name: Event Information

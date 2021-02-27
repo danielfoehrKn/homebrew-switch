@@ -1,0 +1,34 @@
+name: Remote Dispatch Action
+on: [repository_dispatch]
+jobs:
+  update-gardenctl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event Information
+        run: |
+          echo "Event '${{ github.event.action }}' payload '${{ github.event.client_payload.tag }}'"
+          echo "Mac switcher binary hash '${{ github.event.client_payload.mac_sha }}'"
+          echo "Linux switcher binary hash '${{ github.event.client_payload.linux_sha }}'"
+          echo "Switch script hash '${{ github.event.client_payload.switch_script_sha }}'"
+      - uses: actions/checkout@v2.1.1
+      - name: Run update script
+        run:  ./.github/workflows/update-switch.sh ${{ github.event.client_payload.tag }} ${{ github.event.client_payload.mac_sha }} ${{ github.event.client_payload.linux_sha }} ${{ github.event.client_payload.switch_script_sha }}
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update kubeswitch to version "${{ github.event.client_payload.tag }}"
+          delete-branch: true
+          title: [Kubeswitch] Release "${{ github.event.client_payload.tag }}"
+          body: |
+            Awesome. There is a new update.
+          labels: |
+            release
+          assignees: danielfoehrKn
+          reviewers: danielfoehrKn
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"

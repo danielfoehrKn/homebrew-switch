@@ -18,7 +18,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: "Update kubeswitch to version '${{ github.event.client_payload.tag }}'"
+          commit-message: Update kubeswitch version
           title: [Kubeswitch] Release "${{ github.event.client_payload.tag }}"
           delete-branch: true
           body: |

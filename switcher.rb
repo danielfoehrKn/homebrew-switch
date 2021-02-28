@@ -1,14 +1,14 @@
 class Switcher < Formula
   desc "Providing the binary executable for the 'switch' script."
   homepage "https://github.com/danielfoehrKn/kubeswitch"
-  version "v0.2.0"
+  version "0.3.0"
 
   if OS.mac?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.2.0/switcher_darwin_amd64.tar.gz"
-    sha256 "a85cdd9ac8e7ea4e1d1edbeaeb981f25580caf07897d9667f2dde59dce69ce8c"
+    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.3.0/switcher_darwin_amd64"
+    sha256 "f4e2fb0b4e8cc98eaa9a4e26169cd028c2bd497075adaa13f7630bb21d475b69"
   elsif OS.linux?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.2.0/switcher_linux_amd64.tar.gz"
-    sha256 "35c052f0561793a4111525fc40bf50ec029a717337811b905a6db26ad1c06972"
+    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.3.0/switcher_linux_amd64"
+    sha256 "2ad620af3c5cdd256fa2014e49b7e11dcef1e625d927a15cd5975a9defb43490"
   end
 
   depends_on :arch => :x86_64

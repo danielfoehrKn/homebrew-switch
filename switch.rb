@@ -1,15 +1,9 @@
 class Switch < Formula
   desc "The kubectx for operators."
   homepage "https://github.com/danielfoehrKn/kubeswitch"
-  version "v0.2.0"
-
-  if OS.mac?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.2.0/switch.tar.gz"
-    sha256 "202f6657177947487939c634ef260a38c3bac50b442c1d3af42597ad0d463986"
-  elsif OS.linux?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.2.0/switch.tar.gz"
-    sha256 "202f6657177947487939c634ef260a38c3bac50b442c1d3af42597ad0d463986"
-  end
+  version "0.3.0"
+  url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.3.0/switch.sh"
+  sha256 "43dcab7171a2230abb215a196235654eec5664d9be80317ce5b7d2efe2323c86"
 
   depends_on "danielfoehrkn/switch/switcher"
   depends_on :arch => :x86_64

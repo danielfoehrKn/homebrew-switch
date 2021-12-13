@@ -2,8 +2,9 @@
 
 tag=${1}
 mac_sha=${2}
-linux_sha=${3}
-switch_script_sha=${4}
+mac_arm_sha=${3}
+linux_sha=${4}
+switch_script_sha=${5}
 
 if [ -z "${1}" ]
 then
@@ -19,11 +20,17 @@ fi
 
 if [ -z "${3}" ]
 then
-      echo "linux binary sha256sum is not provided"
+      echo "mac arm binary sha256sum is not provided"
       exit 1
 fi
 
 if [ -z "${4}" ]
+then
+      echo "linux binary sha256sum is not provided"
+      exit 1
+fi
+
+if [ -z "${5}" ]
 then
       echo "switch script sha256sum is not provided"
       exit 1
@@ -31,6 +38,7 @@ fi
 
 echo "Update to tag: $tag"
 echo "Update to mac SHA256: $mac_sha"
+echo "Update to mac arm SHA256: $mac_arm_sha"
 echo "Update to linux SHA256: $linux_sha"
 echo "Update to switch.sh SHA256: $switch_script_sha"
 
@@ -62,8 +70,13 @@ class Switcher < Formula
   version "$tag"
 
   if OS.mac?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/$tag/switcher_darwin_amd64"
-    sha256 "$mac_sha"
+    if Hardware::CPU.arm?
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/$tag/switcher_darwin_arm64"
+      sha256 "$mac_arm_sha"
+    else
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/$tag/switcher_darwin_amd64"
+      sha256 "$mac_sha"
+    end
   elsif OS.linux?
     url "https://github.com/danielfoehrKn/kubeswitch/releases/download/$tag/switcher_linux_amd64"
     sha256 "$linux_sha"
@@ -73,8 +86,13 @@ class Switcher < Formula
 
   def install
       if OS.mac?
-        bin.install "switcher_darwin_amd64"
-        mv bin/"switcher_darwin_amd64", bin/"switcher"
+        if Hardware::CPU.arm?
+          bin.install "switcher_darwin_arm64"
+          mv bin/"switcher_darwin_arm64", bin/"switcher"
+        else
+          bin.install "switcher_darwin_amd64"
+          mv bin/"switcher_darwin_amd64", bin/"switcher"
+        end
       elsif OS.linux?
         bin.install "switcher_linux_amd64"
         mv bin/"switcher_linux_amd64", bin/"switcher"

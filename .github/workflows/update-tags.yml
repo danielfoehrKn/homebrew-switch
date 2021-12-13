@@ -8,13 +8,14 @@ jobs:
         run: |
           echo "Event '${{ github.event.action }}' payload '${{ github.event.client_payload.tag }}'"
           echo "Mac switcher binary hash '${{ github.event.client_payload.mac_sha }}'"
+          echo "Mac arm switcher binary hash '${{ github.event.client_payload.mac_arm_sha }}'"
           echo "Linux switcher binary hash '${{ github.event.client_payload.linux_sha }}'"
           echo "Switch script hash '${{ github.event.client_payload.switch_script_sha }}'"
 
       - uses: actions/checkout@v2.1.1
 
       - name: Run update script
-        run:  ./.github/workflows/update-switch.sh ${{ github.event.client_payload.tag }} ${{ github.event.client_payload.mac_sha }} ${{ github.event.client_payload.linux_sha }} ${{ github.event.client_payload.switch_script_sha }}
+        run:  ./.github/workflows/update-switch.sh ${{ github.event.client_payload.tag }} ${{ github.event.client_payload.mac_sha }} ${{ github.event.client_payload.mac_arm_sha }} ${{ github.event.client_payload.linux_sha }} ${{ github.event.client_payload.switch_script_sha }}
 
       - name: Create Pull Request
         id: cpr

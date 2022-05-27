@@ -51,7 +51,6 @@ class Switch < Formula
   sha256 "$switch_script_sha"
 
   depends_on "danielfoehrkn/switch/switcher"
-  depends_on :arch => :x86_64
 
   def install
     prefix.install "switch.sh"
@@ -81,8 +80,6 @@ class Switcher < Formula
     url "https://github.com/danielfoehrKn/kubeswitch/releases/download/$tag/switcher_linux_amd64"
     sha256 "$linux_sha"
   end
-
-  depends_on :arch => :x86_64
 
   def install
       if OS.mac?

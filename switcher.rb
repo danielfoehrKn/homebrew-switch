@@ -16,8 +16,6 @@ class Switcher < Formula
     sha256 "8508523be3a183f97b5f733f3cd9b00dd6ad29e17dcd9dbf291b2a91d0e385b9"
   end
 
-  depends_on :arch => :x86_64
-
   def install
       if OS.mac?
         if Hardware::CPU.arm?

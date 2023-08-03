@@ -1,19 +1,19 @@
 class Switcher < Formula
   desc "Providing the binary executable for the 'switch' script."
   homepage "https://github.com/danielfoehrKn/kubeswitch"
-  version "0.7.2"
+  version "0.8.0"
 
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.2/switcher_darwin_arm64"
-      sha256 "94786f475a5b8ee505bc4c006f331c109133abff0d3eec9f729abd350827d4a8"
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.8.0/switcher_darwin_arm64"
+      sha256 "0954b6945cb904ca20732f5a2c9e5a25aee4265a77bf60262819a8e7e93477cb"
     else
-      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.2/switcher_darwin_amd64"
-      sha256 "5e1c5ddb21b2ca417ad8b37883a296564c631fa13c9c28d7123638b45eb586e3"
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.8.0/switcher_darwin_amd64"
+      sha256 "263bf1b4832ba16cdd249283d4fd3d99c491aa60f4546096f8a2b0fdfb881133"
     end
   elsif OS.linux?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.7.2/switcher_linux_amd64"
-    sha256 "24e8909aa5bd7ea8b1f486b46d1506ae6fcbcefe16d89c28884e9d217d8ada70"
+    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.8.0/switcher_linux_amd64"
+    sha256 "5f341531f557f85b58ac9a8aea7a4d02f694db213ac4b861391ae333bd3cbd5a"
   end
 
   def install

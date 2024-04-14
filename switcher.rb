@@ -36,6 +36,7 @@ class Switcher < Formula
         else
           bin.install "switcher_linux_amd64"
           mv bin/"switcher_linux_amd64", bin/"switcher"
+        end
       end
   end
 

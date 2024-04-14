@@ -1,19 +1,23 @@
 class Switcher < Formula
   desc "Providing the binary executable for the 'switch' script."
   homepage "https://github.com/danielfoehrKn/kubeswitch"
-  version "0.8.1"
+  version "0.9.0"
 
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.8.1/switcher_darwin_arm64"
-      sha256 "93c98e2cb35703ac97e52dac2056a64c60ad57b64ff42e44c6adaf18e0c62b59"
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.9.0/switcher_darwin_arm64"
+      sha256 "9bdc381c4224dbd667c3d4296ede2e22ae9e1f4ecb74804f3df3017d558f293c"
     else
-      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.8.1/switcher_darwin_amd64"
-      sha256 "8a3d5d9eca2c5a0aa706953b6d61acbad177eea55439009a644316672dfddaff"
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.9.0/switcher_darwin_amd64"
+      sha256 "55eb49506e7748a0af45f0e4f8583b25cd2acf064187aa01b2eb61a06520aed6"
     end
   elsif OS.linux?
-    url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.8.1/switcher_linux_amd64"
-    sha256 "c943332f30e5106ece06bd06e6bda91b577961526a532b33c917b35af5acb887"
+    if Hardware::CPU.arm?
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.9.0/switcher_linux_arm64"
+      sha256 "3f9bc7dc9bbbeb14b9ecd6bc76fab52d95d91d11508277a86708af04a2611ebd"
+    else
+      url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.9.0/switcher_linux_amd64"
+      sha256 "8685d51a47e12852d448a97e10d0ca2da5cb37a5fbd7560893493a5589fbcc35"
   end
 
   def install
@@ -26,8 +30,12 @@ class Switcher < Formula
           mv bin/"switcher_darwin_amd64", bin/"switcher"
         end
       elsif OS.linux?
-        bin.install "switcher_linux_amd64"
-        mv bin/"switcher_linux_amd64", bin/"switcher"
+        if Hardware::CPU.arm?
+          bin.install "switcher_linux_arm64"
+          mv bin/"switcher_linux_arm64", bin/"switcher"
+        else
+          bin.install "switcher_linux_amd64"
+          mv bin/"switcher_linux_amd64", bin/"switcher"
       end
   end
 

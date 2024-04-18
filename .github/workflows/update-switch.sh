@@ -92,6 +92,7 @@ class Switcher < Formula
     else
       url "https://github.com/danielfoehrKn/kubeswitch/releases/download/$tag/switcher_linux_amd64"
       sha256 "$linux_sha"
+    end
   end
 
   def install

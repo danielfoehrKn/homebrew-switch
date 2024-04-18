@@ -18,6 +18,7 @@ class Switcher < Formula
     else
       url "https://github.com/danielfoehrKn/kubeswitch/releases/download/0.9.1/switcher_linux_amd64"
       sha256 "c7df78eba2688b53ceb88c5245a199a669d9faaa26c71278c80a17d565d154c8"
+    end
   end
 
   def install
